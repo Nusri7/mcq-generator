@@ -11,7 +11,7 @@ from src.mcq_generator.MCQGenerator import generate_evaluate_chain
 
 
 #loading json file
-with open("E:/Programming Files/DataScience/ineuron-mcq-generator/mcq-generator/response.json", "r") as file:
+with open("response.json", "r") as file:
     RESPONSE_JSON = json.load(file)
 
 #creating a title for the app
