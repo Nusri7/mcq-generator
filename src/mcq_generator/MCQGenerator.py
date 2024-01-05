@@ -8,7 +8,6 @@ from langchain.llms import Together
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 from langchain.prompts import PromptTemplate
-from langchain.callbacks import get_openai_callback
 from  src.mcq_generator.logger import logging
 
 
@@ -20,10 +19,10 @@ key = os.getenv("TOGETHER_API_KEY")
 
 
 llm = Together(
-    model="togethercomputer/llama-2-70b-chat",
+    model="NousResearch/Nous-Hermes-2-Yi-34B",
     temperature=0.9,
-    max_tokens=250,
-    top_k=1,  
+    max_tokens=700,
+    top_k=1,
 )
 
 
@@ -33,10 +32,10 @@ TEMPLATE="""
 Text:{text}
 You are an expert MCQ maker. Given the above text, it is your job to \
 create a quiz  of {number} multiple choice questions for {subject} students in {tone} tone. 
-Make sure the questions are not repeated and check all the questions to be conforming the text as well.
-Make sure to format your response like  RESPONSE_JSON below  and use it as a guide. \
-Ensure to make {number} MCQs
-### RESPONSE_JSON
+Ensure to make {number} MCQs and questions are not repeated and check all the questions to be conforming the text as well.
+Make sure to format your response to json format like response_json below  and use it as a guide. \
+I want the output only in json format and not in any other format. like like response_json below.
+
 {response_json}
 
 """

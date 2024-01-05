@@ -72,10 +72,9 @@ if button and uploaded_file and mcq_count and subject and quiz_tone:
                 end_index = quiz.rfind('}')
 
                 # Extract the JSON string from the original string
-                json_string = quiz[start_index:end_index + 1]
-
-                # Parse the JSON string into a dictionary
-                quiz = json.loads(json_string)
+                quiz_json = quiz[start_index:end_index + 1]
+                
+                
 
                 if quiz is not None:
                     #convert the questions to a dataframe
